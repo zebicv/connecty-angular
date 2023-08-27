@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* font-family: "Rubik", sans-serif; */
+  color: #495057;
+  background-image: linear-gradient(to bottom right, #fbdb89, #f48982);
+  background-repeat: no-repeat;
+  padding-top: 0.8rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
