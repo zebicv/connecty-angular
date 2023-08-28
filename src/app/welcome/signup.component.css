@@ -1,0 +1,12 @@
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  width: 25rem;
+  height: 25rem;
+}

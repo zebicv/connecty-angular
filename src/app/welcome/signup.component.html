@@ -1,0 +1,77 @@
+<div class="logo">
+  <img src="./assets/connecty.png" alt="Logo image" />
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            class="form-control"
+            type="text"
+            name="username"
+            ngModel
+            required
+            #username="ngModel"
+            minlength="6"
+          />
+          <p class="help-block" *ngIf="!username.valid && username.touched">
+            Please enter a valid username
+          </p>
+          <p class="help-block" *ngIf="!username.valid && username.touched">
+            Username must have at least 7 characters
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            class="form-control"
+            type="email"
+            name="email"
+            ngModel
+            required
+            #email="ngModel"
+          />
+          <span *ngIf="email.touched && !email.valid">
+            Please enter a valid email.
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            required
+            (input)="checkPasswordMatch()"
+          />
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input
+            id="confirm_password"
+            class="form-control"
+            type="password"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            required
+            (input)="checkPasswordMatch()"
+          />
+          <p *ngIf="passwordMatchError && isSubmitted">
+            Passwords do not match. Please try again
+          </p>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+      </form>
+      <div>
+        <p>Already have an account?</p>
+        <button class="btn" (click)="onSwitchToLogin()">Switch to login</button>
+      </div>
+    </div>
+  </div>
+</div>
