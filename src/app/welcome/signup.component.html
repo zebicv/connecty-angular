@@ -32,11 +32,12 @@
             class="form-control"
             type="email"
             name="email"
-            ngModel
+            [(ngModel)]="enteredEmail"
             required
             #email="ngModel"
+            (input)="isEmailValid()"
           />
-          <span *ngIf="email.touched && !email.valid">
+          <span *ngIf="email.touched && !isEmailValid()">
             Please enter a valid email.
           </span>
         </div>

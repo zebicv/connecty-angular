@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  enteredEmail: string = '';
   password: string = '';
   confirmPassword: string = '';
   passwordMatchError: boolean = false;
@@ -20,6 +21,13 @@ export class SignupComponent {
 
   onSwitchToLogin() {
     this.router.navigate(['/']);
+  }
+
+  isEmailValid(): boolean {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.enteredEmail))
+      return true;
+
+    return false;
   }
 
   checkPasswordMatch() {
