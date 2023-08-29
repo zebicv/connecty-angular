@@ -16,12 +16,13 @@
             required
             #username="ngModel"
             minlength="6"
+            maxlength="20"
           />
           <p class="help-block" *ngIf="!username.valid && username.touched">
             Please enter a valid username
           </p>
           <p class="help-block" *ngIf="!username.valid && username.touched">
-            Username must have at least 7 characters
+            Username must have between 6 and 20 characters
           </p>
         </div>
         <div class="form-group">
@@ -65,8 +66,17 @@
           <p *ngIf="passwordMatchError && isSubmitted">
             Passwords do not match. Please try again
           </p>
+          <p *ngIf="passwordLengthError && isSubmitted">
+            Passwords must have between 6 and 20 characters
+          </p>
         </div>
-        <button class="btn btn-primary" type="submit">Sign Up</button>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="signupForm.invalid"
+        >
+          Sign Up
+        </button>
       </form>
       <div>
         <p>Already have an account?</p>

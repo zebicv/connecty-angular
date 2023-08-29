@@ -13,6 +13,7 @@ export class SignupComponent {
   password: string = '';
   confirmPassword: string = '';
   passwordMatchError: boolean = false;
+  passwordLengthError: boolean = false;
   isSubmitted: boolean = false;
 
   constructor(private router: Router) {}
@@ -26,15 +27,33 @@ export class SignupComponent {
     this.passwordMatchError = this.password !== this.confirmPassword;
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form.value);
+  isPasswordLengthValid(): boolean {
+    return this.password.length >= 6 && this.password.length <= 20;
+  }
 
-    if (this.password === this.confirmPassword) {
-      // console.log('passwords match');
-      this.router.navigate(['home']);
-    } else {
+  onSubmit(form: NgForm) {
+    const passwordLengthValid: boolean = this.isPasswordLengthValid();
+
+    if (passwordLengthValid && this.password !== this.confirmPassword) {
       this.isSubmitted = true;
       this.passwordMatchError = true;
+      this.passwordLengthError = false;
+    }
+
+    if (!passwordLengthValid && this.password === this.confirmPassword) {
+      this.isSubmitted = true;
+      this.passwordMatchError = false;
+      this.passwordLengthError = true;
+    }
+
+    if (!passwordLengthValid && this.password !== this.confirmPassword) {
+      this.isSubmitted = true;
+      this.passwordMatchError = true;
+      this.passwordLengthError = true;
+    }
+
+    if (passwordLengthValid && this.password === this.confirmPassword) {
+      this.router.navigate(['home']);
     }
   }
 }
