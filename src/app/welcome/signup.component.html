@@ -76,7 +76,7 @@
             Passwords do not match
           </p>
           <p class="error_msg" *ngIf="passwordLengthError && isSubmitted">
-            Passwords must have between 6 and 20 characters
+            Password must have between 6 and 20 characters
           </p>
         </div>
         <div class="btn_wrapper">
@@ -89,11 +89,11 @@
           </button>
         </div>
       </form>
-      <div>
-        <p>Already have an account?</p>
-        <button class="btn btn_switch" (click)="onSwitchToLogin()">
+      <div class="switch_form">
+        <p class="switch_form_message">Already have an account?</p>
+        <a class="btn btn_switch" (click)="onSwitchToLogin()">
           Switch to login
-        </button>
+        </a>
       </div>
     </div>
   </div>
