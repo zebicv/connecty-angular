@@ -1,9 +1,10 @@
 <div class="logo">
   <img src="./assets/connecty.png" alt="Logo image" />
 </div>
-<div class="container">
+<div class="container main_wrapper">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h2>Login</h2>
       <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
         <div class="form-group">
           <label for="email">Email</label>
@@ -27,11 +28,13 @@
             name="password"
           />
         </div>
-        <button class="btn" type="submit">Login</button>
+        <div class="btn_wrapper">
+          <button class="btn btn_submit" type="submit">Login &rarr;</button>
+        </div>
       </form>
       <div>
         <p>Don't have an account yet?</p>
-        <button class="btn" (click)="onSwitchToSignUp()">
+        <button class="btn btn_switch" (click)="onSwitchToSignUp()">
           Switch to sign up
         </button>
       </div>

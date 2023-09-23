@@ -1,9 +1,10 @@
 <div class="logo">
   <img src="./assets/connecty.png" alt="Logo image" />
 </div>
-<div class="container">
+<div class="container main_wrapper">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h2>Sign up</h2>
       <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
         <div class="form-group">
           <label for="username">Username</label>
@@ -18,10 +19,16 @@
             minlength="6"
             maxlength="20"
           />
-          <p class="help-block" *ngIf="!username.valid && username.touched">
-            Please enter a valid username
+          <p
+            class="help-block error_msg"
+            *ngIf="!username.valid && username.touched"
+          >
+            Please enter a username
           </p>
-          <p class="help-block" *ngIf="!username.valid && username.touched">
+          <p
+            class="help-block error_msg"
+            *ngIf="!username.valid && username.touched"
+          >
             Username must have between 6 and 20 characters
           </p>
         </div>
@@ -37,7 +44,8 @@
             #email="ngModel"
             (input)="isEmailValid()"
           />
-          <span *ngIf="email.touched && !isEmailValid()">
+
+          <span class="error_msg" *ngIf="email.touched && !isEmailValid()">
             Please enter a valid email.
           </span>
         </div>
@@ -64,24 +72,28 @@
             required
             (input)="checkPasswordMatch()"
           />
-          <p *ngIf="passwordMatchError && isSubmitted">
-            Passwords do not match. Please try again
+          <p class="error_msg" *ngIf="passwordMatchError && isSubmitted">
+            Passwords do not match
           </p>
-          <p *ngIf="passwordLengthError && isSubmitted">
+          <p class="error_msg" *ngIf="passwordLengthError && isSubmitted">
             Passwords must have between 6 and 20 characters
           </p>
         </div>
-        <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="signupForm.invalid"
-        >
-          Sign Up
-        </button>
+        <div class="btn_wrapper">
+          <button
+            class="btn btn_submit"
+            type="submit"
+            [disabled]="signupForm.invalid"
+          >
+            Sign Up &rarr;
+          </button>
+        </div>
       </form>
       <div>
         <p>Already have an account?</p>
-        <button class="btn" (click)="onSwitchToLogin()">Switch to login</button>
+        <button class="btn btn_switch" (click)="onSwitchToLogin()">
+          Switch to login
+        </button>
       </div>
     </div>
   </div>
