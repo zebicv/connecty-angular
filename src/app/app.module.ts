@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './welcome/login.component';
 import { SignupComponent } from './welcome/signup.component';
 import { HomeComponent } from './connecty/home.component';
+import { HeaderComponent } from './connecty/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { FormsModule } from '@angular/forms';
@@ -23,6 +24,8 @@ const appRoutes: Routes = [
     LoginComponent,
     SignupComponent,
     PageNotFoundComponent,
+    HomeComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
